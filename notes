@@ -1,0 +1,25 @@
+def add_note():
+    note = input("Enter your note: ")
+    with open("notes.txt", "a") as f:
+        f.write(note + "\n")
+    print("Note added!")
+
+def view_notes():
+    try:
+        with open("notes.txt", "r") as f:
+            print("\n--- Notes ---")
+            for i, note in enumerate(f, 1):
+                print(f"{i}. {note.strip()}")
+    except:
+        print("No notes found!")
+
+while True:
+    print("\n1. Add Note\n2. View Notes\n3. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == '1':
+        add_note()
+    elif choice == '2':
+        view_notes()
+    elif choice == '3':
+        break
