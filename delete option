@@ -1,0 +1,19 @@
+
+def delete_note():
+    try:
+        with open("notes.txt", "r") as f:
+            notes = f.readlines()
+
+        for i, note in enumerate(notes, 1):
+            print(f"{i}. {note.strip()}")
+
+        num = int(input("Enter note number to delete: "))
+        notes.pop(num - 1)
+
+        with open("notes.txt", "w") as f:
+            f.writelines(notes)
+
+        print("Note deleted successfully!")
+
+    except:
+        print("Error deleting note!")
